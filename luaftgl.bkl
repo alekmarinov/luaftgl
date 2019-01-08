@@ -1,0 +1,20 @@
+<?xml version="1.0" ?> 
+
+<makefile>
+	<set var="LUAFTGL_DIR">$(LRUN_C_MODULES_DIR)/gui/luagl/luaftgl</set>
+	<set var="LUAFTGL_SRC">$(LUAFTGL_DIR)/src</set>
+	<set var="LUAFTGL_INC">$(SRCDIR)/$(LUAFTGL_DIR)/include</set>
+
+	<dll id="luaftgl" template="simple">
+		<include>$(LUA_INC)</include>
+		<include>$(LUAFTGL_INC)</include>
+		<include>$(FTGL_INC)</include>
+		<include>$(FREETYPE_INC)</include>
+		<sources>
+			$(LUAFTGL_SRC)/LuaFTGL.cpp
+		</sources>
+		<library>liblua</library>
+		<library>ftgl</library>
+		<define cond="FORMAT in ['msvs2003prj','msvs2005prj','msvs2008prj']">_CRT_SECURE_NO_WARNINGS</define>
+	</dll>
+</makefile>
